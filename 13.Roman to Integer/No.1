@@ -1,0 +1,56 @@
+int romanToInt(char * s){
+    int c=0;
+    while(*s != '\0'){
+        c++;
+        s++;
+    }
+    s=s-c;
+    
+    char a[c];
+    for(int i=0;i<c;i++){
+        a[i]=*s++;
+    }
+    
+    int sum=0;
+    for(int i=0;i<c;i++){
+        switch(a[i]){
+            case 'I':
+                if((i!=c-1)&&((a[i+1]=='V') || (a[i+1]=='X')))
+                    sum -= 1;
+                else
+                    sum += 1;
+                break;
+                   
+            case 'V':
+                 sum += 5;
+                 break;
+            
+            case 'X':
+                 if((i!=c-1)&&(a[i+1]=='L'|| a[i+1]=='C'))
+                     sum -= 10;
+                 else
+                     sum += 10;
+                 break;
+                
+            case 'L':
+                  sum += 50;
+                  break;
+            
+            case 'C':
+                  if((i!=c-1)&&(a[i+1]=='D'||a[i+1]=='M'))
+                     sum -= 100;
+                  else
+                     sum += 100;
+                  break;
+                
+            case 'D':
+                  sum += 500;
+                  break;
+                
+            case 'M':
+                  sum += 1000;
+                  break;    
+        }
+    }
+    return sum;
+}

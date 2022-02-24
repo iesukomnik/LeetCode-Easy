@@ -1,0 +1,36 @@
+bool isPalindrome(int x){
+    
+    int c=1,b=0,k=x,p=0,l=1,f=x;
+    
+    if(x<0){
+        return false;   
+    }
+    else{
+    	
+        while(k/10!=0){
+            c++; 
+            k=k/10;
+        }
+    	
+        int a[c];
+    
+        for(int i=0;i<c;i++){
+            a[i]=x%10;
+            x=x/10;
+        }
+        
+    
+        for(int j=c-1;j>=0;j--){
+            p=p+a[j]*l;
+            l=l*10;
+        }
+    	
+    
+    	
+        if(p==f){
+            return true;
+        }
+    
+    return false;
+    }
+}
